@@ -13,19 +13,14 @@ const Divisas = () => {
     const [resultado, setResultado] = useState<number>(0)
     const [error, setError] = useState<boolean>(false)
 
-    const handleChangeOrigen = (texto: string) => {
+    const Moneda = (texto: string) => {
         setOrigen(texto)
     }
-    const handleChangeDestino = (texto: string) => {
+    const MonedaAConversion = (texto: string) => {
         setDestino(texto)
     }
-    const TasaCambio = (texto: string) => {
-        const number = parseFloat(texto);
-        if (isNaN(number)) {
-          setError(true);
-        } else {
-          setError(false);
-        }
+    const TasaCambio = (numero: number) => {
+        setCambio(numero);
       }
     const handleChangeConvertir = (texto: string) => {
         const number = parseFloat(texto)
@@ -38,22 +33,22 @@ const Divisas = () => {
     }
     const handleCalcular = () => {
         if (origen === 'USD' && destino === 'NIO') {
-            const result = convertir * 36
+            const result = convertir * cambio
             setResultado(result)
         } else if (origen === 'USD' && destino === 'EUR') {
-            const result = convertir * 1.00
+            const result = convertir * cambio
             setResultado(result)
         } else if (origen === 'EUR' && destino === 'NIO') {
-            const result = convertir * 35.81
+            const result = convertir * cambio
             setResultado(result)
         } else if (origen === 'EUR' && destino === 'USD') {
-            const result = convertir * 1.0
+            const result = convertir * cambio
             setResultado(result)
         } else if (origen === 'NIO' && destino === 'USD') {
-            const result = convertir * 	0.027
+            const result = convertir * 	cambio
             setResultado(result)
         } else if (origen === 'NIO' && destino === 'EUR') {
-            const result = convertir * 0.025
+            const result = convertir * cambio
             setResultado(result)
         } else {
             alert(
